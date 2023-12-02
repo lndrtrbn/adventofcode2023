@@ -3,5 +3,12 @@
   "version": "1.0.0",
   "author": "Landry Trebon",
   "license": "ISC",
-  "type": "module"
+  "type": "module",
+  "devDependencies": {
+    "ts-node": "^10.9.1",
+    "typescript": "^5.3.2"
+  },
+  "scripts": {
+    "start": "ts-node --esm 2/script.ts"
+  }
 }
