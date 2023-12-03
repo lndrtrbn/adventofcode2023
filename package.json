@@ -9,6 +9,6 @@
     "typescript": "^5.3.2"
   },
   "scripts": {
-    "start": "ts-node --esm 2/script.ts"
+    "start": "ts-node --esm 3/script.ts"
   }
 }
