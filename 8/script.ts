@@ -44,8 +44,39 @@ function moveOn(): number {
   return count;
 }
 
-console.log(moveOn());
+// console.log(moveOn());
 
 // ==============
 // === PART 2 ===
 // ==============
+
+const startNodes = nodes.filter((node) => node.label.endsWith("A"));
+
+const loopSizes = startNodes.map((node) => {
+  let count = 0;
+  let tmpNode = node;
+  while (true) {
+    const direction = template[count % template.length];
+    count++;
+    tmpNode = nodes.find((n) => n.label === tmpNode?.[direction]) as Node;
+    if (!tmpNode) throw Error("Impossible nextNode");
+    if (tmpNode.label.endsWith("Z")) break;
+  }
+  return count;
+});
+
+function ppcm(numbers: number[]) {
+  const sorted = numbers.sort((a, b) => a - b);
+  const max = sorted[numbers.length - 1];
+
+  let found = false;
+  let step = 1;
+  let product = max * step;
+  while (!found) {
+    product = max * step++;
+    found = numbers.every((n) => Number.isInteger(product / n));
+  }
+  console.log(product);
+}
+
+ppcm(loopSizes);
